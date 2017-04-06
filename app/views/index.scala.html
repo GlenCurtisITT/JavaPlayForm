@@ -1,0 +1,58 @@
+@main("Form") {
+    <div class="row">
+        <div class="col-lg-3">
+            <form method="post" action="@routes.HomeController.formSubmit" class="form-horizontal">
+                <!--
+                    type is what the form field will look like. text = normal text box.
+                    Name is the key that is passed to the form with data entered. So, form.get(name) = [text entered in field]
+                -->
+                <label>Name:</label>
+                <input type="text" name="name" class="form-control" />
+
+                <label>Date of Birth:</label>
+                <input type="text" name="DOB" class="form-control" />
+
+                <label>Address:</label>
+                <input type="text" name="address" class="form-control" />
+
+                <!--
+                    For dropdown menus it is the same as text entry except instead of the user entering values they choose
+                    from the dropdown menu which is passed to the key "age" in this case. Included a simple for loop that gives you
+                    1 - 100.
+                -->
+                <label>Age:</label>
+                <select name="age" class="form-control">
+                    @for(x <- 1 to 100){
+                        <option>@x</option>
+                    }
+                </select>
+
+                <!--
+                    In this dropdown menu we changed the value that is passed to the form to a set value. The user sees the word
+                    "Male", "Female", "Other" but what is passed to the form is "M", "F", "O".
+                    This is useful if you are passing ID's to a form but want the user to see the name that is associated to the ID.
+                    So the value could be User ID, but what the user sees is User Name.
+                -->
+                <label>Gender: </label>
+                <select name="gender" class="form-control">
+                    <option value="M">Male</option>
+                    <option value="F">Female</option>
+                    <option value="O">Other</option>
+                </select>
+
+                <!--
+                    type="password" makes it so the letters are hidden when they entered into the form.
+                -->
+                <label>Password:</label>
+                <input type="password" name="password" class="form-control" />
+
+
+                <!--
+                    When submit button is pressed in this case it will go to the method that is pointed to in the action="" clause when
+                    the form was first defined. With the keys, "name", "DOB", "address", "age", "gender" and "password".
+                -->
+                <input type="submit" value="Submit" class="btn btn-primary">
+            </form>
+        </div>
+    </div>
+}
